@@ -1,0 +1,42 @@
+* {
+  /* max-width: 1280px; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+/* Banner Slider */
+.banner img {
+  border-radius: 8px;
+}
+.w-box {
+  width: 308px important;
+}
+
+/* .swiper-slide {
+  width: auto !important;
+} */
+
+.banner-next,
+.banner-prev,
+.carousel-next,
+.carousel-prev {
+  color: #161616 !important;
+  width: 20px !important;
+  background: #fff !important;
+  padding: 8px !important;
+  border-radius: 50%;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* .banner-prev:after,
+.banner-next:after {
+  font-size: 27px !important;
+} */
+
+.swiper-pagination-bullet-active {
+  background: #fff !important;
+}
