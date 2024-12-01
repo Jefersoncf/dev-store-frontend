@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoExpand } from "react-icons/io5";
 import { FiHeart } from "react-icons/fi";
 import { RatingStars } from "./RatingStars";
 import { products } from "../data";
+import { ProductModal } from "./ProductModal";
 
 export const ProductCard = ({ rating, totalReviews }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = (id) => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
   return (
     <>
       <div className="w-fit grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-5 gap-x-8 mb-4">
@@ -21,6 +31,7 @@ export const ProductCard = ({ rating, totalReviews }) => {
             />
             {/* Botões Expandir e Favoritar */}
             <button
+              onClick={() => toggleModal(1)}
               title="Expandir"
               className="absolute top-4 right-4 p-2 bg-whit-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 "
             >
@@ -52,6 +63,11 @@ export const ProductCard = ({ rating, totalReviews }) => {
           </div>
         ))}
       </div>
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black-primary bg-opacity-50">
+          <ProductModal toggleModal={toggleModal} />
+        </div>
+      )}
     </>
   );
 };

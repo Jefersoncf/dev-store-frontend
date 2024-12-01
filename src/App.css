@@ -40,3 +40,9 @@ body {
 .swiper-pagination-bullet-active {
   background: #fff !important;
 }
+
+.img-zoom {
+  height: 400px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}

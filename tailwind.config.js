@@ -17,6 +17,8 @@ export default {
       "gray-dark": "#4F4F4F",
       "gray-tertiary": "#CACACA",
       "red-primary": "#d41e45",
+      "red-secondary": "#ff0000",
+      "red-light": "#ffccd1",
       "yellow-primary": "#FFC107",
       "yellow-secondary": "#FDD835",
       // #f0d442
