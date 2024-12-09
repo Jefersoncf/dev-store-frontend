@@ -6,6 +6,9 @@ export const products = [
   { id: 5, name: "Camisa Social", price: "159,90", oldPrice: "199,90" },
   { id: 6, name: "Mochila Executiva", price: "259,90", oldPrice: "319,90" },
   { id: 7, name: "Relógio Esportivo", price: "429,90", oldPrice: "499,90" },
+  { id: 8, name: "Relógio Esportivo", price: "429,90", oldPrice: "499,90" },
+  { id: 9, name: "Relógio Esportivo", price: "429,90", oldPrice: "499,90" },
+  { id: 10, name: "Relógio Esportivo", price: "429,90", oldPrice: "499,90" },
 ];
 
 export const paymentMethods = [

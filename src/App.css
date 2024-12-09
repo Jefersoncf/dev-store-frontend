@@ -41,8 +41,59 @@ body {
   background: #fff !important;
 }
 
-.img-zoom {
-  height: 400px !important;
-  width: 100% !important;
-  object-fit: cover !important;
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #161616;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.range-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #161616;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #161616;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-checkbox:checked {
+  background-color: #161616;
+}
+
+.custom-checkbox:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+.grid-2 {
+  --basis-size: calc(50% - 11px); /* 50% menos o gap */
+}
+
+.grid-3 {
+  --basis-size: calc(33.39% - 14px); /* 33.33% menos o gap */
+}
+
+.grid-4 {
+  --basis-size: calc(25% - 15px); /* 25% menos o gap */
+}
+
+.product-card {
+  flex: 0 0 var(--basis-size); /* Aplique a largura */
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { ProductCard } from "../components/ProductCard";
 import { BannerSlider } from "../components/BannerSlider";
@@ -21,10 +22,13 @@ export const Home = () => {
             </p>
           </div>
           <div className="">
-            <button className="flex items-center px-4 py-2 text-black-foreground border border-gray-dark  hover:bg-black-tertiary hover:text-whit-primary transition-colors duration-500 ease-in-out rounded-3xl font-medium">
+            <Link
+              to="/product"
+              className="flex items-center px-4 py-2 text-black-foreground border border-gray-dark  hover:bg-black-tertiary hover:text-whit-primary transition-colors duration-500 ease-in-out rounded-3xl font-medium"
+            >
               Ver Todos
               <IoArrowForwardOutline className="ml-2 size-5" />
-            </button>
+            </Link>
           </div>
         </div>
         {/* products */}
@@ -84,8 +88,8 @@ export const Home = () => {
               Inscreva-se na nossa newsletter.
             </h4>
             <p className="text-sm text-gray-light">
-              Cadastre seu melhor para receber promoções e cupons de desconto
-              exclusivos!
+              Cadastre seu melhor e-mail para receber promoções e cupons de
+              desconto exclusivos!
             </p>
           </div>
           <div className="w-1/2 overflow-hidden">
@@ -104,7 +108,7 @@ export const Home = () => {
               />
               <button
                 type="submit"
-                className="w-full max-w-sm bg-whit-primary text-black-secondary py-2 rounded-lg font-medium hover:bg-gray-tertiary transition duration-300"
+                className="w-full max-w-[250px] bg-whit-primary text-black-secondary py-2 rounded-lg font-medium hover:bg-gray-tertiary transition duration-300"
               >
                 Inscrever-se
               </button>

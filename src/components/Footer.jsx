@@ -11,7 +11,7 @@ export const Footer = () => {
         <div className="container mx-auto grid grid-cols-4 gap-8">
           {/* Coluna 1: Sobre Nós */}
           <div>
-            <h3 className="text-xl text-black-tertiary font-semibold mb-4">
+            <h3 className="text-base uppercase text-black-tertiary font-semibold mb-4">
               Sobre Nós
             </h3>
             <p className="text-gray-dark text-sm">
@@ -45,17 +45,17 @@ export const Footer = () => {
 
           {/* Coluna 2: Links Rápidos */}
           <div>
-            <h3 className="text-xl text-black-tertiary font-semibold mb-4">
+            <h3 className="text-base uppercase text-black-tertiary font-semibold mb-4">
               Links Rápidos
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="#" className="text-gray-dark hover:underline">
+                <Link to="/" className="text-gray-dark hover:underline">
                   Início
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-dark hover:underline">
+                <Link to="/product" className="text-gray-dark hover:underline">
                   Produtos
                 </Link>
               </li>
@@ -79,7 +79,7 @@ export const Footer = () => {
 
           {/* Coluna 3: Atendimento ao Cliente */}
           <div>
-            <h3 className="text-xl text-black-tertiary font-semibold mb-4">
+            <h3 className="text-base uppercase text-black-tertiary font-semibold mb-4">
               Atendimento
             </h3>
             <ul className="space-y-2 text-sm">
@@ -92,7 +92,7 @@ export const Footer = () => {
 
           {/* Coluna 4: Métodos de Pagamento */}
           <div>
-            <h4 className="text-xl text-black-tertiary font-semibold mb-4">
+            <h4 className="text-base uppercase text-black-tertiary font-semibold mb-4">
               Métodos de Pagamento
             </h4>
             <div className="grid grid-cols-3 gap-4">
