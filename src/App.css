@@ -95,5 +95,5 @@ body {
 }
 
 .product-card {
-  flex: 0 0 var(--basis-size); /* Aplique a largura */
+  flex: 0 0 var(--basis-size); /* Apliqua a largura */
 }

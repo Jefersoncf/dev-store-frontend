@@ -18,7 +18,7 @@ export const CustomZoomImage = ({ src, alt }) => {
 
   return (
     <div
-      className="relative w-full h-[400px] rounded-lg overflow-hidden cursor-zoom-in"
+      className="relative w-full h-[480px] rounded-lg overflow-hidden cursor-zoom-in"
       onMouseEnter={() => setIsZoomed(true)}
       onMouseLeave={() => setIsZoomed(false)}
       onMouseMove={handleMouseMove}

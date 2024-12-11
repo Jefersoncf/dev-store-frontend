@@ -21,6 +21,14 @@ export default {
       "red-light": "#ffccd1",
       "yellow-primary": "#FFC107",
       "yellow-secondary": "#FDD835",
+      "blue-primary": "#1E90FF",
+      "blue-secondary": "#0000FF",
+      "blue-light": "#ADD8E6",
+      "blue-tertiary": "#020eb0",
+      "green-primary": "#008000",
+      "green-secondary": "#00FF00",
+      "green-light": "#90EE90",
+      "green-tertiary": "#006400",
       // #f0d442
     },
 

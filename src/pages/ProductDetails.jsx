@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { RatingStars } from "./RatingStars";
-import { IoClose } from "react-icons/io5";
+import { RatingStars } from "../components/RatingStars";
+import { CustomZoomImage } from "../components/CustomZoomImage";
 import { FaMinus, FaPlus } from "react-icons/fa6";
-import { FiHeart } from "react-icons/fi";
+import { FiHeart, FiTruck } from "react-icons/fi";
 import { TbTag } from "react-icons/tb";
+import { ImLoop2 } from "react-icons/im";
+import { LuShieldCheck } from "react-icons/lu";
+import { BreadCrumb } from "../components/BreadCrumb";
+import { ProductTabs } from "../components/ProductTabs";
 
-import { CustomZoomImage } from "./CustomZoomImage";
-import { Link } from "react-router-dom";
-
-export const ProductModal = (props, isModalOpen) => {
+export const ProductDetails = () => {
   const product = {
     id: "PROD-001",
     name: "Smartphone XYZ",
@@ -26,12 +27,39 @@ export const ProductModal = (props, isModalOpen) => {
     rating: 4,
     reviews: 128,
     category: "Eletrônicos",
+    sizes: ["P", "M", "G", "GG"],
+    additionalDetails: [
+      "Câmera tripla de 108MP",
+      "Bateria de 5000mAh",
+      "Processador Octa-core",
+    ],
+    specifications: {
+      Tela: "6.7 polegadas AMOLED",
+      Processador: "Snapdragon 888",
+      "Memória RAM": "12GB",
+      Armazenamento: "256GB",
+      "Sistema Operacional": "Android 12",
+    },
+    comments: [
+      {
+        name: "João Silva",
+        rating: 5,
+        text: "Excelente smartphone, superou todas as minhas expectativas!",
+        date: "23 de Maio, 2024",
+      },
+      {
+        name: "Maria Souza",
+        rating: 4,
+        text: "Bom aparelho, mas um pouco caro. A câmera é incrível.",
+        date: "15 de Junho, 2024",
+      },
+    ],
   };
 
   const [quantity, setQuantity] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState(null);
 
   const incrementQuantity = () => {
     if (quantity < product.stock) {
@@ -56,22 +84,10 @@ export const ProductModal = (props, isModalOpen) => {
   };
 
   return (
-    <div className="relative">
-      <div
-        className="bg-whit-primary rounded-lg shadow-xl w-[850px] max-h-[90vh] overflow-y-auto relative p-6"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={() => props.toggleModal(!isModalOpen)}
-          className="absolute top-4 right-4 text-gray-dark hover:text-gray-900"
-        >
-          <IoClose
-            size={24}
-            className="hover:text-red-primary transition-colors duration-300"
-          />
-        </button>
-
-        <div className="mt-4">
+    <>
+      <BreadCrumb title="Detalhes do Produto" />
+      <section className="relative container mx-auto mt-4 mb-6">
+        <div className="w-full relative">
           <div className="mb-2 border-b border-b-gray-medium">
             <h2 className="text-2xl font-semibold text-black-tertiary">
               {product.name}
@@ -96,7 +112,7 @@ export const ProductModal = (props, isModalOpen) => {
           </div>
 
           <div className="flex space-x-6 mt-4">
-            <div className="w-[40%]">
+            <div className="w-[50%]">
               <div className="mb-4">
                 <CustomZoomImage
                   src={product.images[selectedImage]}
@@ -125,7 +141,7 @@ export const ProductModal = (props, isModalOpen) => {
               </div>
             </div>
 
-            <div className="w-[60%] space-y-4">
+            <div className="w-[50%] space-y-4">
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-gray-dark text-lg  line-through">
@@ -150,22 +166,47 @@ export const ProductModal = (props, isModalOpen) => {
               </div>
 
               <div>
-                <p className="text-gray-dark text-sm mb-1">Estoque:</p>
+                <p className="text-gray-dark text-base mb-1">Estoque:</p>
                 <p className="font-semibold text-black-quaternary">
                   {product.stock} unidades disponíveis
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-lg font-semibold text-black-quaternary mb-2">
+              <div className="">
+                <h3 className="text-base font-semibold text-black-quaternary mb-2">
                   Descrição:
                 </h3>
-                <p className="text-gray-dark text-sm">{product.description}</p>
+                <p className="text-gray-dark text-sm mb-6">
+                  {product.description}
+                </p>
               </div>
+
+              {product.sizes && (
+                <div className="mb-4">
+                  <h3 className="font-semibold text-base text-black-quaternary mb-2">
+                    Tamanhos:
+                  </h3>
+                  <div className="flex space-x-2">
+                    {product.sizes.map((variant, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedVariant(variant)}
+                        className={`px-3 py-1 border border-gray-dark rounded-md  text-sm font-medium text-black-quaternary hover:bg-black-tertiary hover:text-whit-primary transition-all duration-300 ease-in-out ${
+                          selectedVariant === variant
+                            ? "bg-black-tertiary text-whit-primary"
+                            : ""
+                        }`}
+                      >
+                        {variant}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Quantity and Cart Controls */}
               <div className="space-y-4">
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 py-2">
                   <div className="flex items-center border border-gray-dark rounded-lg overflow-hidden">
                     <button
                       onClick={decrementQuantity}
@@ -192,16 +233,10 @@ export const ProductModal = (props, isModalOpen) => {
                   </button>
                 </div>
 
-                <div className="flex space-x-4">
-                  <Link
-                    to={`/product/${product.id}`}
-                    className="w-[40%] flex items-center justify-center p-2 rounded-lg transition-colors hover:bg-gray-light text-gray-dark border"
-                  >
-                    Ver Detalhes
-                  </Link>
+                <div className="flex space-x-4 pb-2">
                   <button
                     onClick={toggleFavorite}
-                    className={`w-[60%] flex items-center justify-center p-2 gap-1 rounded-lg transition-colors ${
+                    className={`w-[50%] flex items-center justify-center p-2 gap-1 rounded-lg transition-colors ${
                       isFavorite
                         ? "bg-gray-medium text-black-quaternary border"
                         : "hover:bg-gray-light text-gray-dark border"
@@ -217,6 +252,27 @@ export const ProductModal = (props, isModalOpen) => {
                         : "Adicionar aos Favoritos"}
                     </span>
                   </button>
+                  <button className="w-[50%] flex items-center justify-center p-2 rounded-lg transition-colors hover:bg-gray-light text-gray-dark border">
+                    <ImLoop2 size={20} className="mr-2" />
+                    Comparar
+                  </button>
+                </div>
+                <div className="bg-gray-light rounded-lg p-2">
+                  <div className="flex items-center mb-2">
+                    <FiTruck size={20} className="mr-2 text-blue-secondary" />
+                    <span className="font-semibold text-sm text-black-quaternary">
+                      Frete Grátis a partir de R$ 299,00!
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <LuShieldCheck
+                      size={20}
+                      className="mr-2 text-green-primary"
+                    />
+                    <span className="font-semibold text-sm text-black-quaternary">
+                      Garantia de 30 dias!
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -232,7 +288,8 @@ export const ProductModal = (props, isModalOpen) => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        <ProductTabs product={product} />
+      </section>
+    </>
   );
 };
