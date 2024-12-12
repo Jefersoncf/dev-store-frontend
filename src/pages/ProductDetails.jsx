@@ -8,6 +8,7 @@ import { ImLoop2 } from "react-icons/im";
 import { LuShieldCheck } from "react-icons/lu";
 import { BreadCrumb } from "../components/BreadCrumb";
 import { ProductTabs } from "../components/ProductTabs";
+import { ReviewForm } from "../components/ReviewForm";
 
 export const ProductDetails = () => {
   const product = {
@@ -81,6 +82,11 @@ export const ProductDetails = () => {
     console.log(
       `Adicionando ${quantity} unidades do produto ${product.id} ao carrinho`
     );
+  };
+
+  const handleSubmitReview = (review) => {
+    console.log("Avaliação enviada:", review);
+    alert("Avaliação enviada com sucesso!");
   };
 
   return (
@@ -227,7 +233,7 @@ export const ProductDetails = () => {
                   </div>
                   <button
                     onClick={addToCart}
-                    className="flex-grow flex items-center justify-center bg-black-tertiary text-whit-primary px-4 py-2 rounded-lg hover:bg-black-quaternary transition-colors"
+                    className="flex-grow flex items-center justify-center bg-black-tertiary text-whit-primary px-4 py-2 rounded-lg hover:bg-black-secondary transition-colors ease-in-out duration-300"
                   >
                     Adicionar ao Carrinho
                   </button>
@@ -289,6 +295,7 @@ export const ProductDetails = () => {
           </div>
         </div>
         <ProductTabs product={product} />
+        <ReviewForm onSubmitReview={handleSubmitReview} />
       </section>
     </>
   );
