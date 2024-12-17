@@ -9,6 +9,9 @@ import { LuShieldCheck } from "react-icons/lu";
 import { BreadCrumb } from "../components/BreadCrumb";
 import { ProductTabs } from "../components/ProductTabs";
 import { ReviewForm } from "../components/ReviewForm";
+import { ProductCard } from "../components/ProductCard";
+import { IoArrowForwardOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export const ProductDetails = () => {
   const product = {
@@ -93,7 +96,7 @@ export const ProductDetails = () => {
     <>
       <BreadCrumb title="Detalhes do Produto" />
       <section className="relative container mx-auto mt-4 mb-6">
-        <div className="w-full relative">
+        <div className="w-full relative pb-5">
           <div className="mb-2 border-b border-b-gray-medium">
             <h2 className="text-2xl font-semibold text-black-tertiary">
               {product.name}
@@ -296,6 +299,32 @@ export const ProductDetails = () => {
         </div>
         <ProductTabs product={product} />
         <ReviewForm onSubmitReview={handleSubmitReview} />
+      </section>
+
+      <section className="home-products py-10">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="">
+            <h3 className="text-2xl text-black-tertiary font-semibold mb-0">
+              Produtos Relacionados
+            </h3>
+            <p className="text-gray-dark text-sm mb-0">
+              Confira tambem os produtos relacionados para você.
+            </p>
+          </div>
+          <div className="">
+            <Link
+              to="/product"
+              className="flex items-center px-4 py-2 text-black-foreground border border-gray-dark  hover:bg-black-tertiary hover:text-whit-primary transition-colors duration-500 ease-in-out rounded-3xl font-medium"
+            >
+              Ver Todos
+              <IoArrowForwardOutline className="ml-2 size-5" />
+            </Link>
+          </div>
+        </div>
+        {/* products */}
+        <div className="container mx-auto mt-5">
+          <ProductCard />
+        </div>
       </section>
     </>
   );

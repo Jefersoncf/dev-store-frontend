@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -46,8 +46,19 @@ const items = [
 
 export const ProductSlider = ({ rating, totalReviews }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [carouselSwiper, setCarouselSwiper] = useState(null);
+  // const [carouselSwiper, setCarouselSwiper] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? items.length - 1 : prevIndex - 1
+    );
+  };
 
   const toggleModal = (id) => {
     setIsModalOpen(!isModalOpen);
@@ -61,12 +72,11 @@ export const ProductSlider = ({ rating, totalReviews }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <Swiper
-          onSwiper={setCarouselSwiper}
           slidesPerView={4}
           spaceBetween={20}
           navigation={{
-            nextEl: ".carousel-next",
             prevEl: ".carousel-prev",
+            nextEl: ".carousel-next",
           }}
           modules={[Navigation]}
           breakpoints={{
@@ -80,8 +90,8 @@ export const ProductSlider = ({ rating, totalReviews }) => {
         >
           <div className="w-fit grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-5 gap-x-8 mb-4">
             {items.map((product) => (
-              <SwiperSlide key={product.id}>
-                <div className="w-[315px] relative group">
+              <div key={product.id}>
+                <div className="w-[315px] relative group hover:shadow-lg transition-all duration-300 rounded-lg overflow-hidden">
                   {/* Badge */}
                   <span className="absolute top-4 left-4 bg-black-quaternary text-whit-primary text-xs font-bold py-1 px-2 rounded">
                     -20%
@@ -89,7 +99,7 @@ export const ProductSlider = ({ rating, totalReviews }) => {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-80 object-cover"
+                    className="w-full h-80 object-cover rounded-lg"
                   />
                   {/* Botões Expandir e Favoritar */}
                   <button
@@ -106,7 +116,7 @@ export const ProductSlider = ({ rating, totalReviews }) => {
                     <FiHeart className="w-5 h-5 text-black-foreground hover:scale-110 hover:text-red-primary transition-colors" />
                   </button>
 
-                  <div className="py-4">
+                  <div className="py-3 px-2">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-sm font-medium text-black-tertiary  ">
                         {product.name}
@@ -126,23 +136,23 @@ export const ProductSlider = ({ rating, totalReviews }) => {
                     </div>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
           </div>
         </Swiper>
         <button
-          onClick={() => carouselSwiper?.slidePrev()}
-          className={`carousel-prev absolute top-[36%] left-4 transform -translate-y-1/2 z-10 bg-white text-black p-3 rounded-full shadow-lg ${
+          onClick={handlePrev}
+          className={`carousel-prev absolute top-[36%] left-4 transform -translate-y-1/2 z-10 p-3 rounded-full shadow-lg ${
             isHovered ? "opacity-100" : "opacity-0"
           } transition-opacity duration-300`}
         >
-          <IoChevronBack className="text-2xl" />
+          <IoChevronBack className="text-2xl text-black-foreground" />
         </button>
 
         {/* Botão Próximo */}
         <button
-          onClick={() => carouselSwiper?.slideNext()}
-          className={`carousel-next absolute top-[36%] right-4 transform -translate-y-1/2 z-10 bg-white text-black p-3 rounded-full shadow-lg ${
+          onClick={handleNext}
+          className={`carousel-next absolute top-[36%] right-4 transform -translate-y-1/2 z-10 p-3 rounded-full shadow-lg ${
             isHovered ? "opacity-100" : "opacity-0"
           } transition-opacity duration-300`}
         >

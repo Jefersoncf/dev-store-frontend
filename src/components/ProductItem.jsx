@@ -4,42 +4,7 @@ import { FiHeart } from "react-icons/fi";
 import { RatingStars } from "./RatingStars";
 import { ProductModal } from "./ProductModal";
 
-const items = [
-  {
-    id: 1,
-    name: "Camiseta Básica",
-    price: "89,90",
-    oldPrice: "129,90",
-    image:
-      "https://t-static.dafiti.com.br/nYV1_mLGVD3HjieqXNpkjRsn6-0=/fit-in/215x312/static.dafiti.com.br/p/aramis-t%25c3%25aanis-aramis-calce-f%25c3%25a1cil-verde-5706-44438231-2-product.jpg",
-  },
-  {
-    id: 2,
-    name: "Camiseta Básica",
-    price: "89,90",
-    oldPrice: "129,90",
-    image:
-      "https://t-static.dafiti.com.br/nYV1_mLGVD3HjieqXNpkjRsn6-0=/fit-in/215x312/static.dafiti.com.br/p/aramis-t%25c3%25aanis-aramis-calce-f%25c3%25a1cil-verde-5706-44438231-2-product.jpg",
-  },
-  {
-    id: 3,
-    name: "Camiseta Básica",
-    price: "89,90",
-    oldPrice: "129,90",
-    image:
-      "https://t-static.dafiti.com.br/nYV1_mLGVD3HjieqXNpkjRsn6-0=/fit-in/215x312/static.dafiti.com.br/p/aramis-t%25c3%25aanis-aramis-calce-f%25c3%25a1cil-verde-5706-44438231-2-product.jpg",
-  },
-  {
-    id: 4,
-    name: "Camiseta Básica",
-    price: "89,90",
-    oldPrice: "129,90",
-    image:
-      "https://t-static.dafiti.com.br/nYV1_mLGVD3HjieqXNpkjRsn6-0=/fit-in/215x312/static.dafiti.com.br/p/aramis-t%25c3%25aanis-aramis-calce-f%25c3%25a1cil-verde-5706-44438231-2-product.jpg",
-  },
-];
-
-export const ProductCard = ({ rating, totalReviews, grid }) => {
+export const ProductItem = ({ products, rating, totalReviews, grid }) => {
   const gridClass = `grid-${grid}`;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -49,19 +14,19 @@ export const ProductCard = ({ rating, totalReviews, grid }) => {
 
   return (
     <>
-      <div className="w-fit grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-5 gap-x-8 mb-4">
-        {items?.length > 0 ? (
-          items.map((product) => (
+      <div className={`flex flex-wrap gap-y-5 gap-x-5 mb-4 ${gridClass}`}>
+        {products?.length > 0 ? (
+          products.map((product) => (
             <div
               key={product.id}
-              className={`w-[315px] relative group hover:shadow-lg transition-all duration-300 rounded-lg overflow-hidden`}
+              className={`product-card relative group hover:shadow-lg transition-all duration-300 rounded-lg overflow-hidden`}
             >
               {/* Badge */}
               <span className="absolute top-4 left-4 bg-black-quaternary text-whit-primary text-xs font-bold py-1 px-2 rounded">
                 -20%
               </span>
               <img
-                src={product.image}
+                src="https://t-static.dafiti.com.br/nYV1_mLGVD3HjieqXNpkjRsn6-0=/fit-in/215x312/static.dafiti.com.br/p/aramis-t%25c3%25aanis-aramis-calce-f%25c3%25a1cil-verde-5706-44438231-2-product.jpg"
                 alt={product.name}
                 className="w-full h-80 object-cover rounded-lg"
               />

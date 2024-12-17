@@ -6,9 +6,12 @@ import Grid2 from "../assets/grid-2.png";
 import Grid3 from "../assets/grid-3.png";
 import Grid4 from "../assets/grid-4.png";
 import { FiChevronDown } from "react-icons/fi";
-import { ProductCard } from "../components/ProductCard";
+import { ProductItem } from "../components/ProductItem";
 import { Pagination } from "../components/Pagination";
 import { products } from "../data";
+import { Link } from "react-router-dom";
+import { IoArrowForwardOutline } from "react-icons/io5";
+import { ProductCard } from "../components/ProductCard";
 
 export const Product = () => {
   const [selectedFilter, setSelectedFilter] = useState("");
@@ -123,7 +126,7 @@ export const Product = () => {
               </div>
             </div>
 
-            <ProductCard grid={grid} products={currentProducts} />
+            <ProductItem grid={grid} products={currentProducts} />
 
             <div className="flex justify-end mt-5">
               {/* Componente de paginação */}

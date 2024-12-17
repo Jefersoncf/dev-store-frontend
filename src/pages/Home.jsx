@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoArrowForwardOutline } from "react-icons/io5";
-import { ProductCard } from "../components/ProductCard";
 import { BannerSlider } from "../components/BannerSlider";
 import { ProductSlider } from "../components/ProductSlider";
+import { ProductCard } from "../components/ProductCard";
 
 export const Home = () => {
   return (
@@ -55,7 +55,7 @@ export const Home = () => {
           </div>
         </div>
         {/* products */}
-        <div className="container mx-auto mt-5">
+        <div className="container mx-auto mt-5 mb-10">
           <ProductCard />
         </div>
 
