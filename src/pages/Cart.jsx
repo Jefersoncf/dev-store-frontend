@@ -59,29 +59,41 @@ export const Cart = () => {
         <div className="flex bg-whit-primary border border-gray-medium rounded-lg p-6">
           {/* Cart Items List */}
           <div className="w-2/3 pr-6 border-r border-gray-medium">
-            <h2 className="text-2xl font-semibold text-black-tertiary mb-6">
-              Seu Carrinho
-            </h2>
-
-            <div className="grid grid-cols-12 mb-4 pb-2 border-b font-semibold text-gray-600">
-              <div className="col-span-5 text-left font-semibold">Produto</div>
-              <div className="col-span-3 text-right font-semibold">
+            <div className="mb-5">
+              <h2 className="text-2xl font-semibold text-black-tertiary">
+                Seu Carrinho
+              </h2>
+              <p className="mt-1 text-gray-dark text-sm">
+                Há um total de{" "}
+                <span className="text-black-tertiary font-semibold">
+                  {cartItems.length}{" "}
+                </span>
+                itens no seu carrinho.
+              </p>
+            </div>
+            <div className="grid grid-cols-12 mb-4 py-3 px-2 bg-gray-light rounded-t-md text-black-tertiary">
+              <div className="col-span-5 text-left font-medium">Produto</div>
+              <div className="col-span-3 text-right font-medium">
                 Quantidade
               </div>
-              <div className="col-span-2 text-right font-semibold">Preço</div>
-              <div className="col-span-2 text-right font-semibold">Remover</div>
+              <div className="col-span-2 text-right font-medium">Subtotal</div>
+              <div className="col-span-2 text-right font-medium">Remover</div>
             </div>
-            {cartItems.map((item) => (
+            {cartItems.map((item, index) => (
               <div
                 key={item.id}
-                className="grid grid-cols-12 items-center justify-between mb-4 pb-4 border-b border-gray-medium"
+                className={`grid grid-cols-12 items-center mb-4 pb-4 ${
+                  index !== cartItems.length - 1
+                    ? "border-b border-b-gray-medium"
+                    : ""
+                }`}
               >
                 <div className="col-span-5 flex items-center space-x-4 ">
                   <input
                     type="checkbox"
                     checked={item.selected}
                     onChange={() => toggleItemSelection(item.id)}
-                    className="mr-2"
+                    className="custom-checkbox w-4 h-4"
                   />
                   <img
                     src={item.image}
@@ -98,27 +110,30 @@ export const Cart = () => {
                   </div>
                 </div>
 
-                <div className="col-span-3 flex items-center space-x-4">
+                <div className="col-span-3 flex justify-end items-center">
                   <div className="flex items-center border border-gray-medium rounded-lg overflow-hidden">
                     <button
                       onClick={() => updateQuantity(item.id, -1)}
                       className="p-2 hover:bg-gray-light"
                     >
-                      <FaMinus size={16} className="text-black-quaternary" />
+                      <FaMinus size={16} className="text-gray-dark" />
                     </button>
-                    <span className="w-12 flex items-center justify-center px-4 text-sm font-semibold text-black-quaternary">
+                    <span className="w-12 flex items-center justify-center px-4 text-sm font-medium text-black-quaternary">
                       {item.quantity}
                     </span>
                     <button
                       onClick={() => updateQuantity(item.id, 1)}
                       className="p-2 hover:bg-gray-light"
                     >
-                      <FaPlus size={16} className="text-black-quaternary" />
+                      <FaPlus size={16} className="text-gray-dark" />
                     </button>
                   </div>
                 </div>
-                <div className="col-span-2 flex items-center space-x-2">
-                  <span> R$ {(item.price * item.quantity).toFixed(2)}</span>
+                <div className="col-span-2 text-right">
+                  <span className="text-black-quaternary text-sm">
+                    {" "}
+                    R$ {(item.price * item.quantity).toFixed(2)}
+                  </span>
                 </div>
                 <div className="col-span-2 flex justify-end">
                   <button
@@ -141,14 +156,16 @@ export const Cart = () => {
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span className="text-gray-dark text-sm">Subtotal</span>
-                <span className="text-gray-dark text-sm">
+                <span className="text-gray-dark text-sm font-semibold">
                   R$ {total.toFixed(2)}
                 </span>
               </div>
 
               <div className="flex justify-between">
                 <span className="text-gray-dark text-sm">Entrega</span>
-                <span className="text-gray-dark text-sm">Grátis</span>
+                <span className="text-gray-dark text-sm font-semibold">
+                  Grátis
+                </span>
               </div>
 
               <div className="flex justify-between font-semibold text-lg border-t border-gray-medium pt-4">
