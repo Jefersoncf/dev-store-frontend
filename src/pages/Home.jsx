@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { BannerSlider } from "../components/BannerSlider";

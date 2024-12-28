@@ -1,28 +1,37 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { BreadCrumb } from "../components/BreadCrumb";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
+import { MyContext } from "../App";
+
 export const Login = () => {
+  const context = useContext(MyContext);
+
+  useEffect(() => {
+    context.setIsHeaderFooterVisible(false);
+  }, []);
+
   return (
     <>
       <BreadCrumb title="Login" />
 
-      <div className="flex items-center justify-center w-full min-h-screen mx-auto lg:px-12 lg:w-3/5">
+      <div className="min-h-[calc(100vh-40px)] flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md bg-whit-primary p-8 border border-gray-medium rounded-xl">
-          <h1 className="text-3xl text-black-tertiary font-semibold">Login</h1>
-          <p className="text-gray-dark text-sm mt-1">
-            Olá, Bem-vindo de voltar 👋
-          </p>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl text-black-tertiary font-semibold">
+              Login
+            </h2>
+            <p className="text-gray-dark text-sm mt-1">
+              Olá, Bem-vindo de voltar 👋
+            </p>
+          </div>
 
-          <form className="space-y-5 mt-5">
-            <button className="w-full py-2 my-3 border border-gray-medium flex space-x-2 items-center justify-center rounded-lg text-black-foreground hover:bg-black-tertiary hover:text-whit-primary transition-all duration-300 ease-in-out">
+          <form className="space-y-5">
+            <button className="w-full py-2 my-3 border border-gray-medium flex space-x-2 items-center justify-center rounded-lg text-gray-dark hover:bg-black-tertiary hover:text-whit-primary transition ease-in-out duration-300">
               <FcGoogle size={24} />
-              <span className="text-base text-gray-dark">
-                Entrar com Google
-              </span>
+              <span className="text-base ">Entrar com Google</span>
             </button>
             {/* Divider */}
             <div className="relative">
