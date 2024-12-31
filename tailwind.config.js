@@ -21,6 +21,7 @@ export default {
       "red-light": "#ffccd1",
       "yellow-primary": "#FFC107",
       "yellow-secondary": "#FDD835",
+      "yellow-light": "#FFF9C4", //#ebe7b7
       "blue-primary": "#1E90FF",
       "blue-secondary": "#0000FF",
       "blue-light": "#ADD8E6",

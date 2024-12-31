@@ -9,7 +9,10 @@ import { ProductDetails } from "./pages/ProductDetails";
 import { Cart } from "./pages/Cart";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
-import { Profile } from "./pages/Profile";
+import { MyAccount } from "./pages/MyAccount";
+import { Addresses } from "./components/Addresses";
+import { Orders } from "./pages/Orders";
+import { Coupon } from "./components/Coupon";
 
 export const MyContext = createContext();
 
@@ -36,10 +39,11 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/account" element={<MyAccount />} />
+          <Route path="/addresses" element={<Addresses />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/coupons" element={<Coupon />} />
           {/* 
-        <Route path="/my-listing" element={<MyListing />} />
-        <Route path="/orders" element={<Orders />} />
         <Route path="/search" element={<Search />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about-us" element={<AboutUs />} /> */}
