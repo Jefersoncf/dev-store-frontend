@@ -9,15 +9,19 @@ import { ProductDetails } from "./pages/ProductDetails";
 import { Cart } from "./pages/Cart";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
+import { Profile } from "./pages/Profile";
 
 export const MyContext = createContext();
 
 function App() {
   const [isHeaderFooterVisible, setIsHeaderFooterVisible] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
 
   const values = {
     isHeaderFooterVisible,
     setIsHeaderFooterVisible,
+    isLogin,
+    setIsLogin,
   };
 
   return (
@@ -32,11 +36,11 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
           {/* 
         <Route path="/my-listing" element={<MyListing />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/my-account" element={<MyAccount />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about-us" element={<AboutUs />} /> */}
         </Routes>

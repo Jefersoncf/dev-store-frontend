@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../assets/logo.jpg";
 import { Link } from "react-router-dom";
 import { Inputbox } from "./Inputbox";
@@ -6,8 +6,10 @@ import { FiUser, FiHeart } from "react-icons/fi";
 import { IoBagOutline } from "react-icons/io5";
 import { RiCoupon3Line } from "react-icons/ri";
 import { Navigation } from "./Navigation";
+import { MyContext } from "../App";
 
 export const Header = () => {
+  const context = useContext(MyContext);
   return (
     <>
       <div className="header border-b border-b-gray-medium pb-2 z-10">
@@ -36,13 +38,22 @@ export const Header = () => {
               </div>
               <div className="flex gap-4">
                 <div className="relative">
-                  <Link
-                    to="/login"
-                    className="p-2 rounded-full bg-gray-light hover:bg-gray-medium transition-colors duration-200 flex items-center justify-center "
-                    title="Minha Conta"
-                  >
-                    <FiUser size={25} className="hover:scale-110" />
-                  </Link>
+                  {context.isLogin ? (
+                    <Link
+                      to="/profile"
+                      className="p-2 rounded-full bg-gray-light hover:bg-gray-medium transition-colors duration-200 flex items-center justify-center "
+                      title="Minha Conta"
+                    >
+                      <FiUser size={25} className="hover:scale-110" />
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/login"
+                      className=" flex items-center justify-center py-2 px-3 rounded-3xl bg-black-tertiary text-whit-primary font-medium hover:bg-black-quaternary transition-colors ease-in-out duration-300"
+                    >
+                      ENTRAR
+                    </Link>
+                  )}
                 </div>
                 <div className="relative">
                   <Link

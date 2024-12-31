@@ -195,7 +195,7 @@ export const ProductModal = (props, isModalOpen) => {
                 <div className="flex space-x-4">
                   <Link
                     to={`/product/${product.id}`}
-                    className="w-[40%] flex items-center justify-center p-2 rounded-lg transition-colors hover:bg-gray-light text-gray-dark border"
+                    className="w-[40%] flex items-center justify-center p-2 rounded-lg transition-colors hover:bg-gray-light text-gray-dark border border-gray-medium"
                   >
                     Ver Detalhes
                   </Link>
@@ -203,8 +203,8 @@ export const ProductModal = (props, isModalOpen) => {
                     onClick={toggleFavorite}
                     className={`w-[60%] flex items-center justify-center p-2 gap-1 rounded-lg transition-colors ${
                       isFavorite
-                        ? "bg-gray-medium text-black-quaternary border"
-                        : "hover:bg-gray-light text-gray-dark border"
+                        ? "bg-gray-medium text-black-quaternary border border-gray-medium"
+                        : "hover:bg-gray-light text-gray-dark border border-gray-medium"
                     }`}
                   >
                     <FiHeart
