@@ -36,8 +36,8 @@ export const MyAccount = () => {
                 onClick={() => setActiveTab("profile")}
                 className={`w-full text-left px-4 py-2 rounded-md font-medium transition-colors ${
                   activeTab === "profile"
-                    ? "bg-gray-light text-black-tertiary"
-                    : "text-black-tertiary hover:bg-gray-light"
+                    ? "bg-gray-light text-black-quaternary"
+                    : "text-black-quaternary hover:bg-gray-light"
                 }`}
               >
                 Perfil

@@ -40,7 +40,7 @@ export const Header = () => {
                 <div className="relative">
                   {context.isLogin ? (
                     <Link
-                      to="/profile"
+                      to="/account"
                       className="p-2 rounded-full bg-gray-light hover:bg-gray-medium transition-colors duration-200 flex items-center justify-center "
                       title="Minha Conta"
                     >

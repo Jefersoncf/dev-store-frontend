@@ -3,13 +3,13 @@ import { FiChevronDown } from "react-icons/fi";
 
 export const Profile = () => {
   return (
-    <div className="container">
-      <div className="p-6 border-b border-gray-medium bg-gray-light rounded-t-lg">
+    <div className="container border border-gray-light bg-whit-primary rounded-lg">
+      <div className="p-6 bg-gray-light rounded-t-lg">
         <h2 className="text-xl font-semibold text-black-quaternary">
           Meu Perfil
         </h2>
       </div>
-      <div className="max-w-md mx-auto my-5 rounded-lg border border-gray-medium overflow-hidden">
+      <div className="max-w-[80%] mx-auto my-6 rounded-lg border border-gray-medium overflow-hidden">
         {/* Profile Image Container */}
         <div className="w-full flex flex-col items-center p-4 bg-gray-light">
           <div className="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gray-medium">

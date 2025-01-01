@@ -133,8 +133,8 @@ export const Orders = () => {
               onClick={() => setActiveStatus(item.id)}
               className={`px-6 py-4 font-medium whitespace-nowrap border-b-2 transition-colors ${
                 activeStatus === item.id
-                  ? "border-black-quaternary text-black-quaternary"
-                  : "border-whit-primary text-gray-dark hover:text-black-quaternary hover:border-black-quaternary"
+                  ? "border-black-tertiary text-black-tertiary"
+                  : "border-gray-light text-gray-dark hover:text-black-tertiary hover:border-black-tertiary"
               }`}
             >
               {item.label}
